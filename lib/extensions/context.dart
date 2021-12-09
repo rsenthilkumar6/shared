@@ -7,6 +7,20 @@ extension BuildContextExtension on BuildContext {
   /// Usage: context.textTheme;
   TextTheme get textTheme => theme.textTheme;
 
+  Size get size => MediaQuery.of(this).size;
+
+  /// Check if screen is in portrait mode
+  bool get isPortrait => size.height > size.width;
+
+  /// Check if screen is in landscape mode
+  bool get isLandscape => size.height < size.width;
+
+  /// Width based on orientation
+  double get responsiveWidth => isPortrait ? size.width : size.height;
+
+  /// Height based on orientation
+  double get responsiveHeight => isPortrait ? size.height : size.width;
+
   double get height => MediaQuery.of(this).size.height;
   double get width => MediaQuery.of(this).size.width;
 
